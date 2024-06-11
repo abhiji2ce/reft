@@ -22,6 +22,7 @@
     <LangVersion>10.0</LangVersion>
   </PropertyGroup>
 
+
   <PropertyGroup>
     <RazorLangVersion>5.0</RazorLangVersion>
 </PropertyGroup>

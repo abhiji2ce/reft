@@ -40,7 +40,10 @@ namespace orderAPI
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Your API Name", Version = "v1" });
             });
 
-            
+            services.AddHttpsRedirection(options =>
+            {
+                options.HttpsPort = 5083; // Specify the HTTPS port used by your application
+            });
 
             services.AddControllers();
         }
@@ -61,7 +64,12 @@ namespace orderAPI
 
         app.UseHttpsRedirection();
         app.UseRouting();
+        app.UseAuthentication();
         app.UseAuthorization();
+
+        app.UseMiddleware<MyCustomMiddleware>();
+
+
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllers();
